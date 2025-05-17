@@ -1,13 +1,13 @@
 import { defineConfig, devices } from '@playwright/test'
 
 export default defineConfig({
-  testDir: './tests',
-  fullyParallel: true,
+  testDir: './specs',
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
+    baseURL: 'https://thinking-tester-contact-list.herokuapp.com',
     trace: 'on-first-retry',
   },
 
