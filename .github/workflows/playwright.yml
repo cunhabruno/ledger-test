@@ -3,7 +3,9 @@ on: push
 jobs:
   test:
     timeout-minutes: 30
-    runs-on: mcr.microsoft.com/playwright:v1.52.0-noble
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     steps:
     - uses: actions/checkout@v4
     - name: Install dependencies
