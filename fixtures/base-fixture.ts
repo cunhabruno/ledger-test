@@ -1,7 +1,7 @@
 import { test as base } from '@playwright/test'
 import { ContactListAppPage } from '../page-objects/contact-list-app-page'
 
-type ContactListAppFixtures = {
+export type ContactListAppFixtures = {
   contactListApp: ContactListAppPage
 }
 export const test = base.extend<ContactListAppFixtures>({

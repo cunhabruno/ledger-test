@@ -12,7 +12,8 @@
     "husky": "^9.1.7"
   },
   "scripts": {
-    "test": "npx playwright test",
-    "prepare": "husky install"
+    "e2e": "npx playwright test",
+    "prepare": "husky install",
+    "e2e-login": "rm -rf ./playwright && npx playwright test --project=login-setup"
   }
 }

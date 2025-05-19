@@ -3,10 +3,12 @@ import { UserDetails } from '../types/types'
 import { AbstractAuthenticationForm } from './abstract-authentication-form'
 
 export class SignUpForm extends AbstractAuthenticationForm {
+  page: Page
   firstNameInput: Locator
   lastNameInput: Locator
   constructor(page: Page) {
     super(page)
+    this.page = page
     this.firstNameInput = this.mainContent.locator('#firstName')
     this.lastNameInput = this.mainContent.locator('#lastName')
   }
@@ -16,5 +18,6 @@ export class SignUpForm extends AbstractAuthenticationForm {
     await this.emailInput.fill(userDetails.email)
     await this.passwordInput.fill(userDetails.password)
     await this.submitButton.click()
+    await this.page.waitForURL('**/contactList')
   }
 }

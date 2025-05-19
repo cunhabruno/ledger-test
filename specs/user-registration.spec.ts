@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/contact-list-app-fixture'
+import { test, expect } from '../fixtures/base-fixture'
 import { faker } from '@faker-js/faker'
 
 const userDetails = {
@@ -8,6 +8,7 @@ const userDetails = {
   password: faker.internet.password(),
 }
 test('user registration flow', async ({ contactListApp }) => {
+  await contactListApp.page.context().clearCookies()
   await contactListApp.signUpPage.goto()
 
   await test.step('user should be able to register', async () => {
