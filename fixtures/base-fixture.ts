@@ -1,12 +1,12 @@
 import { test as base } from '@playwright/test'
-import { ContactListAppPage } from '../page-objects/contact-list-app-page'
+import { ContactListApp } from '../page-objects/contact-list-app'
 
 export type ContactListAppFixtures = {
-  contactListApp: ContactListAppPage
+  contactListApp: ContactListApp
 }
 export const test = base.extend<ContactListAppFixtures>({
   contactListApp: async ({ page }, use) => {
-    const contactListApp = new ContactListAppPage(page)
+    const contactListApp = new ContactListApp(page)
     await use(contactListApp)
   },
 })

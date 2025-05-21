@@ -11,6 +11,7 @@ export default defineConfig({
     baseURL: 'https://thinking-tester-contact-list.herokuapp.com',
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
+    serviceWorkers: 'block',
   },
 
   projects: [

@@ -8,6 +8,7 @@ export class ContactListTable {
   readonly allRows: Locator
   readonly headerCells: Locator
   readonly rowByIndex: (index: number) => Locator
+  readonly rowByTdText: (tdText: string) => Locator
   readonly cellByRowAndCol: (rowIndex: number, colIndex: number) => Locator
   constructor(tableParentLocator: Locator) {
     this.page = tableParentLocator.page()
@@ -17,6 +18,10 @@ export class ContactListTable {
     this.allRows = this.table.locator('.contactTableBodyRow')
     this.headerCells = this.headerRow.locator('th')
     this.rowByIndex = (index: number) => this.allRows.nth(index)
+    this.rowByTdText = (tdText: string) =>
+      this.allRows.filter({
+        has: this.page.locator(`td >> text=${tdText}`),
+      })
     this.cellByRowAndCol = (rowIndex: number, colIndex: number) =>
       this.rowByIndex(rowIndex).locator('td').nth(colIndex)
   }

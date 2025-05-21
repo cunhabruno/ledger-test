@@ -18,3 +18,8 @@ export type AddContactFormDetails = {
   postalCode?: string
   country?: string
 }
+
+export type ContactListTableRowData = AddContactFormDetails & {
+  _id: string
+  owner: string
+}

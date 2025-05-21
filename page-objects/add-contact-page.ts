@@ -1,23 +1,28 @@
-import { Locator, Page } from '@playwright/test'
-import { AbstractPage } from './common/abstract-page'
-import { AddContactFormDetails } from '../types/types'
+import { Locator, Page, Response } from '@playwright/test'
+import { AddContactFormDetails, ContactListTableRowData } from '../types/types'
+import { waitForContactGetResponse } from '../utils/endpoint-wait'
+import { AbstractFormPage } from './abstract-form-page'
 
-export class AddContactPage extends AbstractPage {
-  formInput: (inputId: string) => Locator
-  submitButton: Locator
+export class AddContactPage extends AbstractFormPage {
   constructor(page: Page) {
     super(page, 'Add Contact')
-    this.formInput = (inputId: string) => this.pageBody.locator(`#${inputId}`)
-    this.submitButton = this.pageBody.locator('#submit')
   }
   async goto() {
     await this.page.goto('/addContact')
-    await this.pageBody.waitFor()
+    await this.waitForAddContactPage()
   }
   async addContact(addContactFormDetails: AddContactFormDetails) {
     await this.formInput('firstName').fill(addContactFormDetails.firstName)
     await this.formInput('lastName').fill(addContactFormDetails.lastName)
-    await this.submitButton.click()
-    await this.page.waitForURL('**/contactList')
+
+    await Promise.all([
+      this.submitButton.click(),
+      waitForContactGetResponse(this.page),
+    ])
+  }
+
+  async waitForAddContactPage() {
+    await waitForContactGetResponse(this.page)
+    await this.pageBody.waitFor()
   }
 }

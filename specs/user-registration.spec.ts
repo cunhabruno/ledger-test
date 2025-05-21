@@ -14,12 +14,12 @@ test('user registration flow', async ({ contactListApp }) => {
   await test.step('user should be able to register', async () => {
     await contactListApp.signUpPage.signUpForm.registerUser(userDetails)
     await expect(
-      contactListApp.contactListHomePage.addContactButton
+      contactListApp.contactListMainPage.addContactButton
     ).toBeVisible()
   })
 
   await test.step('user should be able to logout', async () => {
-    await contactListApp.contactListHomePage.logOut()
+    await contactListApp.contactListMainPage.logOut()
     await expect(contactListApp.loginPage.loginForm.mainContent).toBeVisible()
   })
 
@@ -29,7 +29,7 @@ test('user registration flow', async ({ contactListApp }) => {
       password: userDetails.password,
     })
     await expect(
-      contactListApp.contactListHomePage.addContactButton
+      contactListApp.contactListMainPage.addContactButton
     ).toBeVisible()
   })
 })
