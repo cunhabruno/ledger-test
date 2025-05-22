@@ -22,7 +22,7 @@ export class AddContactPage extends AbstractFormPage {
   }
 
   async waitForAddContactPage() {
-    await waitForContactGetResponse(this.page)
+    await this.page.waitForURL('/addContact')
     await this.pageBody.waitFor()
   }
 }

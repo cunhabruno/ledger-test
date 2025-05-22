@@ -34,4 +34,4 @@ Before you begin, ensure you have the following installed:
 To run all tests in headless mode:
 
 ```bash
-npx playwright test
+yarn e2e
