@@ -32,7 +32,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    if: success()
+    if: ${{ !cancelled() }}
 
     steps:
       - name: Checkout repository
