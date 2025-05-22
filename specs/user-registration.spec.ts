@@ -1,12 +1,6 @@
 import { test, expect } from '../fixtures/base-fixture'
-import { faker } from '@faker-js/faker'
+import { userDetails } from '../mock/fake-data'
 
-const userDetails = {
-  firstName: faker.person.firstName(),
-  lastName: faker.person.lastName(),
-  email: faker.internet.email(),
-  password: faker.internet.password(),
-}
 test('user registration flow', async ({ contactListApp }) => {
   await contactListApp.page.context().clearCookies()
   await contactListApp.signUpPage.goto()

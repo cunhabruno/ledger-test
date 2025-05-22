@@ -1,10 +1,5 @@
 import { test, expect } from '../fixtures/base-fixture'
-import { AddContactFormDetails } from '../types/types'
-import { faker } from '@faker-js/faker'
-const addContactFormDetails: AddContactFormDetails = {
-  firstName: faker.person.firstName().substring(0, 20),
-  lastName: Date.now().toString(),
-}
+import { addContactFormDetails } from '../mock/fake-data'
 
 let nameColumn =
   addContactFormDetails.firstName + ' ' + addContactFormDetails.lastName

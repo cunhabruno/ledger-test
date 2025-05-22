@@ -31,5 +31,13 @@ export default defineConfig({
     //   name: 'webkit',
     //   use: { ...devices['Desktop Safari'] },
     // },
+
+    {
+      name: 'api-tests',
+      testMatch: 'specs/api/*.spec.ts',
+      use: {
+        baseURL: 'https://thinking-tester-contact-list.herokuapp.com',
+      },
+    },
   ],
 })
