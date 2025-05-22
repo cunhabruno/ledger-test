@@ -17,9 +17,17 @@ export default defineConfig({
   projects: [
     { name: 'login-setup', testMatch: 'login.setup.ts' },
     {
+      name: 'teardown',
+      testMatch: 'teardown.ts',
+      use: {
+        storageState: STORAGE_STATE_PATH,
+      },
+    },
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'], storageState: STORAGE_STATE_PATH },
       dependencies: ['login-setup'],
+      teardown: 'teardown',
     },
 
     // {

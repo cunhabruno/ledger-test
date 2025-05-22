@@ -66,4 +66,6 @@ export class ContactListApi {
       Authorization: `Bearer ${this.apiKey}`,
     }
   }
+
+  setApiKeyFromStorageState() {}
 }
