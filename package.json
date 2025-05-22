@@ -14,6 +14,10 @@
   "scripts": {
     "api-test": "npx playwright test --project=api-tests",
     "e2e": "npx playwright test",
+    "docker-run": "docker compose -f docker/docker-compose.yml run --rm playwright_ledger",
+    "e2e-docker": "yarn docker-run yarn e2e",
+    "e2e-update-screenshots": "yarn e2e --update-snapshots",
+    "e2e-update-screenshots-docker": "yarn docker-run yarn e2e-update-screenshots",
     "prepare": "husky install",
     "e2e-login": "rm -rf ./playwright && npx playwright test --project=login-setup"
   }

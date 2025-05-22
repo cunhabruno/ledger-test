@@ -40,4 +40,5 @@ test('contact list CRUD', async ({ contactListApp }) => {
       )
     ).toContainText('Edited Contact')
   })
+  await expect(contactListApp.contactListMainPage.pageBody).toHaveScreenshot()
 })

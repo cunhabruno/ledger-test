@@ -1,0 +1,8 @@
+services:
+  playwright_ledger:
+    image: "mcr.microsoft.com/playwright:v1.52.0-noble"
+    container_name: playwright_ledger
+    volumes:
+      - ../:/app
+    working_dir: /app
+    network_mode: host
